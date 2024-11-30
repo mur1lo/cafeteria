@@ -1,0 +1,59 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de log
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependências
+node_modules/
+bower_components/
+
+# Compilação
+dist/
+build/
+out/
+tmp/
+*.class
+*.war
+*.jar
+*.pyc
+*.o
+*.obj
+*.exe
+*.dll
+
+# IDEs e editores
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user
+
+# Ferramentas específicas
+coverage/
+*.mochawesome.json
+*.nyc_output/
+*.pytest_cache/
+
+# Configuração de ambiente
+.env
+.env.local
+.env.*.local
+
+# Arquivos temporários
+*.swp
+*.bak
+*.tmp
+~$*
+*.lock
+
+# Outros
+__pycache__/
+*.iml
+*.map
