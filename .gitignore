@@ -19,7 +19,6 @@ out/
 tmp/
 *.class
 *.war
-*.jar
 *.pyc
 *.o
 *.obj
