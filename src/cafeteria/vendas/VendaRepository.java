@@ -1,6 +1,6 @@
 package cafeteria.vendas;
 
-import cafeteria.vendas.produtos.IProdutoDAO;
+import cafeteria.vendas.produtos.IProdutoRepository;
 import cafeteria.vendas.produtos.UnidadeMedida;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,9 +19,9 @@ import java.util.List;
 public class VendaRepository implements IVendaRepository {
 
     private static final Logger logger = LogManager.getLogger(VendaRepository.class);    private Connection connection;
-    private final IProdutoDAO produtoRepository;
+    private final IProdutoRepository produtoRepository;
 
-    public VendaRepository(Connection connection, IProdutoDAO produtoRepository) {
+    public VendaRepository(Connection connection, IProdutoRepository produtoRepository) {
         this.connection = connection;
         this.produtoRepository = produtoRepository;
     }
@@ -87,8 +87,8 @@ public class VendaRepository implements IVendaRepository {
     }
 
     @Override
-    public List<VendasDiaRelatorio> buscarVendas(LocalDateTime dataHora) {
-        List<VendasDiaRelatorio> vendasDiaRelatorio = new ArrayList<>();
+    public List<VendasDiaRelatorioDTO> buscarVendas(LocalDateTime dataHora) {
+        List<VendasDiaRelatorioDTO> vendasDiaRelatorioDTO = new ArrayList<>();
         String sql = "SELECT " +
                 "iv.nome as nome_produto, iv.medida , sum(iv.quantidade) as quantidade , sum(iv.preco) as preco " +
                 "FROM " +
@@ -104,12 +104,12 @@ public class VendaRepository implements IVendaRepository {
             stmt.setDate(1, Date.valueOf(dataHora.toLocalDate()));
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                VendasDiaRelatorio venda = new VendasDiaRelatorio();
+                VendasDiaRelatorioDTO venda = new VendasDiaRelatorioDTO();
                 venda.setNome(rs.getString("nome_produto"));
                 venda.setMedida(UnidadeMedida.from(rs.getInt("medida")));
                 venda.setQuantidade(rs.getInt("quantidade"));
                 venda.setPreco(rs.getDouble("preco"));
-                vendasDiaRelatorio.add(venda);
+                vendasDiaRelatorioDTO.add(venda);
             }
             logger.info("relatorio de vendas do dia buscadas com sucesso");
         } catch (SQLException e) {
@@ -117,7 +117,7 @@ public class VendaRepository implements IVendaRepository {
             throw new RuntimeException("Erro ao buscar vendas: " + e.getMessage(), e);
         }
 
-        return vendasDiaRelatorio;
+        return vendasDiaRelatorioDTO;
     }
 
     private Venda getVendaById(List<Venda> vendas, int id) {

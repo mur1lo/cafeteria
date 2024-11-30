@@ -1,7 +1,7 @@
 package cafeteria.vendas.relatorios;
 
 import cafeteria.vendas.clientes.ClientRepository;
-import cafeteria.vendas.clientes.MelhorClienteRelatorio;
+import cafeteria.vendas.clientes.MelhorClienteRelatorioDTO;
 
 import javax.swing.*;
 import java.io.File;
@@ -29,9 +29,9 @@ public class RelatorioMelhorClienteCSV implements RelatorioExportavelEmArquivoTe
 
             printWriter.println("nome cliente,total gasto,quantidade de vendas");
 
-            List<MelhorClienteRelatorio> clientes = repository.relatorioMelhorCliente();
+            List<MelhorClienteRelatorioDTO> clientes = repository.relatorioMelhorCliente();
 
-            for (MelhorClienteRelatorio c : clientes) {
+            for (MelhorClienteRelatorioDTO c : clientes) {
                 printWriter.println(c.getNome() + "," + c.getTotalGasto() + "," + c.getTotalCompras());
             }
 

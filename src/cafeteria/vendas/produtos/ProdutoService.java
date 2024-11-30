@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ProdutoService implements IProdutoService {
 
-    private IProdutoDAO repository;
+    private IProdutoRepository repository;
 
-    public ProdutoService(IProdutoDAO repository) {
+    public ProdutoService(IProdutoRepository repository) {
         this.repository = repository;
     }
 

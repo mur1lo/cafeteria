@@ -2,7 +2,7 @@ package cafeteria.vendas;
 
 import cafeteria.vendas.produtos.UnidadeMedida;
 
-public class VendasDiaRelatorio {
+public class VendasDiaRelatorioDTO {
 
     private String nome;
     private UnidadeMedida medida;

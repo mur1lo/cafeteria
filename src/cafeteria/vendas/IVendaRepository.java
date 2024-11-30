@@ -6,5 +6,5 @@ import java.util.List;
 public interface IVendaRepository {
     void registrarVenda(Venda venda);
 
-    List<VendasDiaRelatorio> buscarVendas(LocalDateTime dataHora);
+    List<VendasDiaRelatorioDTO> buscarVendas(LocalDateTime dataHora);
 }

@@ -1,6 +1,6 @@
 package cafeteria.vendas.clientes;
 
-public class MelhorClienteRelatorio {
+public class MelhorClienteRelatorioDTO {
 
     private String nome;
     private double totalGasto;

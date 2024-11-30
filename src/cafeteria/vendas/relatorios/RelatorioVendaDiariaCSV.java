@@ -1,7 +1,7 @@
 package cafeteria.vendas.relatorios;
 
 import cafeteria.vendas.IVendaRepository;
-import cafeteria.vendas.VendasDiaRelatorio;
+import cafeteria.vendas.VendasDiaRelatorioDTO;
 
 import javax.swing.*;
 import java.io.File;
@@ -32,14 +32,14 @@ public class RelatorioVendaDiariaCSV implements RelatorioExportavelEmArquivoText
 
             printWriter.println("nome,medida,quantidade,preco");
 
-            List<VendasDiaRelatorio> vendas = repository.buscarVendas(LocalDateTime.now());
+            List<VendasDiaRelatorioDTO> vendas = repository.buscarVendas(LocalDateTime.now());
 
-            for (VendasDiaRelatorio venda : vendas) {
+            for (VendasDiaRelatorioDTO venda : vendas) {
                 printWriter.println(venda.getNome() + "," + venda.getMedida() + "," + venda.getQuantidade() + "," + venda.getPreco());
             }
 
-            printWriter.println("total quantidades: " + vendas.stream().mapToInt(VendasDiaRelatorio::getQuantidade).sum());
-            printWriter.println("total preços: " + vendas.stream().mapToDouble(VendasDiaRelatorio::getPreco).sum());
+            printWriter.println("total quantidades: " + vendas.stream().mapToInt(VendasDiaRelatorioDTO::getQuantidade).sum());
+            printWriter.println("total preços: " + vendas.stream().mapToDouble(VendasDiaRelatorioDTO::getPreco).sum());
 
             JOptionPane.showMessageDialog(null, "Relatório exportado com sucesso!");
         } catch (IOException e) {

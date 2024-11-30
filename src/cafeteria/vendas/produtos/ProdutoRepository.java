@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoRepository implements IProdutoDAO {
+public class ProdutoRepository implements IProdutoRepository {
 
     private static final Logger logger = LogManager.getLogger(ProdutoRepository.class);
     private Connection conn;

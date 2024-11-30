@@ -2,7 +2,7 @@ package cafeteria.vendas.produtos;
 
 import java.util.List;
 
-public interface IProdutoDAO {
+public interface IProdutoRepository {
 
     Produto buscar(int id);
 

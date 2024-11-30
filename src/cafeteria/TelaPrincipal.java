@@ -10,7 +10,7 @@ import cafeteria.vendas.clientes.ClientRepository;
 import cafeteria.vendas.clientes.ClientService;
 import cafeteria.vendas.clientes.ClienteView;
 import cafeteria.vendas.clientes.IClienteService;
-import cafeteria.vendas.produtos.IProdutoDAO;
+import cafeteria.vendas.produtos.IProdutoRepository;
 import cafeteria.vendas.produtos.IProdutoService;
 import cafeteria.vendas.produtos.ProdutoRepository;
 import cafeteria.vendas.produtos.ProdutoService;
@@ -51,7 +51,7 @@ public class TelaPrincipal extends JFrame implements ActionListener {
 
     //repository
     private ClientRepository clientRepository = null;
-    private IProdutoDAO produtoRepository = null;
+    private IProdutoRepository produtoRepository = null;
     private IVendaRepository vendaRepository = null;
 
     // Services

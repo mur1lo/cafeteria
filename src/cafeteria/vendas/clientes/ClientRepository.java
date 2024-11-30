@@ -87,7 +87,7 @@ public class ClientRepository {
         return clientes;
     }
 
-    public List<MelhorClienteRelatorio> relatorioMelhorCliente() {
+    public List<MelhorClienteRelatorioDTO> relatorioMelhorCliente() {
         String sql = "SELECT\n" +
                 "\tc.nome as nome_cliente, sum(iv.preco) as total_gasto, count(v.id) as quantidade_compra\n" +
                 "FROM\n" +
@@ -97,11 +97,11 @@ public class ClientRepository {
                 "where 1=1\n" +
                 "group by c.nome\n" +
                 "order by total_gasto desc\n";
-        List<MelhorClienteRelatorio> clientes = new ArrayList<>();
+        List<MelhorClienteRelatorioDTO> clientes = new ArrayList<>();
         try (PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                MelhorClienteRelatorio cliente = new MelhorClienteRelatorio();
+                MelhorClienteRelatorioDTO cliente = new MelhorClienteRelatorioDTO();
                 cliente.setNome(rs.getString("nome_cliente"));
                 cliente.setTotalCompras(rs.getInt("quantidade_compra"));
                 cliente.setTotalGasto(rs.getDouble("total_gasto"));
