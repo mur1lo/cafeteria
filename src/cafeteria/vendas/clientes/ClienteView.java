@@ -201,6 +201,9 @@ public class ClienteView extends JInternalFrame {
         id.setText(null);
         nome.setEnabled(false);
         telefone.setEnabled(false);
+        id.setEnabled(true);
+        btPesquisar.setEnabled(true);
+        btNovoCliente.setEnabled(true);
     }
 
     /**
