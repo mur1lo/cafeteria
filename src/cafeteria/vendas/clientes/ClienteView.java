@@ -211,7 +211,7 @@ public class ClienteView extends JInternalFrame {
      */
     protected void onClickSalvar() {
         try {
-            if (nome.getText().isEmpty() || telefone.getText().isEmpty()) {
+            if (nome.getText().isEmpty() || telefone.getValue() == null) {
                 JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", ERROR_MESSAGE);
                 return;
             }
@@ -250,5 +250,6 @@ public class ClienteView extends JInternalFrame {
         id.setText(null);
         nome.setText(null);
         telefone.setText(null);
+        telefone.setValue(null);
     }
 }
